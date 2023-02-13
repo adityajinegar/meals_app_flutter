@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app_flutter/dummy_data.dart';
+import 'package:meals_app_flutter/data/dummy_data.dart';
+import 'package:meals_app_flutter/widgets/meal_item.dart';
 
 class CategoryMeals extends StatelessWidget {
   static const routeName = '/category-meals';
@@ -28,7 +29,13 @@ class CategoryMeals extends StatelessWidget {
       appBar: AppBar(title: Text(categoryTitle!)),
       body: ListView.builder(
         itemBuilder: (context, index) {
-          return Text(categoryMeals[index].title);
+          return MealItem(
+            title: categoryMeals[index].title,
+            imageUrl: categoryMeals[index].imageUrl,
+            duration: categoryMeals[index].duration,
+            complexity: categoryMeals[index].complexity,
+            affordability: categoryMeals[index].affordability,
+          );
         },
         itemCount: categoryMeals.length,
       ),
