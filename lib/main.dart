@@ -1,3 +1,5 @@
+import 'package:meals_app_flutter/screens/filters.dart';
+
 import 'screens/category_meals.dart';
 import 'screens/meal_detail.dart';
 import 'screens/tabs.dart';
@@ -28,16 +30,18 @@ class MyApp extends StatelessWidget {
                   color: Color.fromRGBO(20, 51, 51, 1),
                 ),
                 titleLarge: const TextStyle(
-                    fontSize: 20,
-                    fontFamily: 'RobotoCondensed',
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
+                  fontSize: 20,
+                  fontFamily: 'RobotoCondensed',
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
               )),
       // home: const Categories(),
       routes: {
         '/': (context) => const Tabs(),
         CategoryMeals.routeName: (context) => const CategoryMeals(),
         MealDetail.routeName: (context) => const MealDetail(),
+        Filters.routeName: (context) => const Filters(),
       },
       onUnknownRoute: (settings) {
         return MaterialPageRoute(
