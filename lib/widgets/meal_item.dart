@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app_flutter/models/meal.dart';
-import 'package:meals_app_flutter/screens/meal_detail.dart';
+import '../models/meal.dart';
+import '../screens/meal_detail.dart';
 
 class MealItem extends StatelessWidget {
   const MealItem({
@@ -109,21 +109,30 @@ class MealItem extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      const Icon(Icons.schedule),
+                      const Icon(
+                        Icons.schedule,
+                        color: Colors.teal,
+                      ),
                       const SizedBox(width: 6),
                       Text('$duration min'),
                     ],
                   ),
                   Row(
                     children: [
-                      const Icon(Icons.work),
+                      const Icon(
+                        Icons.work,
+                        color: Colors.teal,
+                      ),
                       const SizedBox(width: 6),
                       Text(complexityText),
                     ],
                   ),
                   Row(
                     children: [
-                      const Icon(Icons.attach_money),
+                      const Icon(
+                        Icons.attach_money,
+                        color: Colors.teal,
+                      ),
                       const SizedBox(width: 6),
                       Text(affordabilityText),
                     ],

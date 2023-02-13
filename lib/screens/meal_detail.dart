@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app_flutter/data/dummy_data.dart';
+
+import '../data/dummy_data.dart';
 
 class MealDetail extends StatelessWidget {
   const MealDetail({super.key});
@@ -56,11 +57,14 @@ class MealDetail extends StatelessWidget {
             buildContainer(
               ListView.builder(
                 itemBuilder: (context, index) => Card(
-                  color: Theme.of(context).colorScheme.secondary,
+                  color: Theme.of(context).colorScheme.primary,
                   child: Padding(
                     padding:
                         const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                    child: Text(selectedMeal.ingredients[index]),
+                    child: Text(
+                      selectedMeal.ingredients[index],
+                      style: const TextStyle(color: Colors.white),
+                    ),
                   ),
                 ),
                 itemCount: selectedMeal.ingredients.length,
@@ -73,7 +77,7 @@ class MealDetail extends StatelessWidget {
                   children: [
                     ListTile(
                       leading: CircleAvatar(
-                        backgroundColor: Colors.pink,
+                        backgroundColor: Colors.teal,
                         child: Text(
                           '# ${(index + 1)}',
                           style: const TextStyle(color: Colors.white),
