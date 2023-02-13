@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app_flutter/dummy_data.dart';
 
 class CategoryMeals extends StatelessWidget {
+  static const routeName = '/category-meals';
+
+  const CategoryMeals({super.key});
   // const CategoryMeals({
   //   super.key,
   //   required this.categoryId,
@@ -16,11 +20,17 @@ class CategoryMeals extends StatelessWidget {
 
     final categoryId = routeArgs['id'];
     final categoryTitle = routeArgs['title'];
+    final categoryMeals = DUMMY_MEALS
+        .where((meal) => meal.categories.contains(categoryId))
+        .toList();
 
     return Scaffold(
       appBar: AppBar(title: Text(categoryTitle!)),
-      body: const Center(
-        child: Text('The Recipes For The Category!'),
+      body: ListView.builder(
+        itemBuilder: (context, index) {
+          return Text(categoryMeals[index].title);
+        },
+        itemCount: categoryMeals.length,
       ),
     );
   }

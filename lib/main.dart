@@ -31,8 +31,11 @@ class MyApp extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               )),
-      home: const Categories(),
-      routes: {'/category-meals': (context) => CategoryMeals()},
+      // home: const Categories(),
+      routes: {
+        '/': (context) => const Categories(),
+        CategoryMeals.routeName: (context) => const CategoryMeals(),
+      },
     );
   }
 }
