@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app_flutter/screens/filters.dart';
+
+import '../screens/filters.dart';
 
 class MainDrawer extends StatelessWidget {
   const MainDrawer({super.key});
@@ -17,7 +18,7 @@ class MainDrawer extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
-      onTap: tapHandler(),
+      onTap: () => tapHandler(),
     );
   }
 
@@ -43,10 +44,15 @@ class MainDrawer extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           buildListTile('Meals', Icons.restaurant, () {
-            Navigator.of(context).pushNamed('/');
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              // had to include this line because Navigator function was running before the build method
+              Navigator.of(context).pushReplacementNamed('/');
+            });
           }),
           buildListTile('Filters', Icons.settings, () {
-            Navigator.of(context).pushReplacementNamed(Filters.routeName);
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              Navigator.of(context).pushReplacementNamed(Filters.routeName);
+            });
           }),
         ],
       ),
