@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../data/dummy_data.dart';
 import '../models/meal.dart';
 import '../widgets/meal_item.dart';
 
 class CategoryMeals extends StatefulWidget {
   static const routeName = '/category-meals';
 
-  const CategoryMeals({super.key});
+  final List<Meal> availableMeals;
+
+  const CategoryMeals(this.availableMeals, {super.key});
 
   @override
   State<CategoryMeals> createState() => _CategoryMealsState();
@@ -19,8 +20,9 @@ class _CategoryMealsState extends State<CategoryMeals> {
   var _loadedInitData = false;
 
   @override
-  void
-      initState() {} // cannot put anything that has 'context' in initState() because it runs before the widget
+  void initState() {
+    super.initState();
+  } // cannot put anything that has 'context' in initState() because it runs before the widget
 
   @override
   void didChangeDependencies() {
@@ -30,7 +32,7 @@ class _CategoryMealsState extends State<CategoryMeals> {
 
       final categoryId = routeArgs['id'];
       categoryTitle = routeArgs['title']!;
-      displayedMeals = DUMMY_MEALS
+      displayedMeals = widget.availableMeals
           .where((meal) => meal.categories.contains(categoryId))
           .toList();
       _loadedInitData = true;
@@ -47,7 +49,7 @@ class _CategoryMealsState extends State<CategoryMeals> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(categoryTitle!)),
+      appBar: AppBar(title: Text(categoryTitle)),
       body: ListView.builder(
         itemBuilder: (context, index) {
           return MealItem(
